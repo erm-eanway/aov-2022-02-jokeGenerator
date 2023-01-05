@@ -1,14 +1,15 @@
 <template>
   <div class="w-full h-full flex justify-center items-center flex-col" v-if="state.jokeStatus != 'loading'">
     <span class="text-3xl mb-5">{{ state.joke.setup }}</span>
-    <button class="rounded-lg shadow w-24 h-12 bg-gray-200" @click="handleDelivery" v-if="state.jokeStatus == 'setup'">
-      Tell Me!
-    </button>
     <span class="text-2xl text-gray-400 mb-10" v-if="state.jokeStatus == 'delivered'">
       {{ state.joke.delivery }}
     </span>
+    <span class="text-2xl text-gray-400 mb-10" v-else> ... </span>
+    <button class="rounded-lg shadow w-24 h-12 bg-gray-200" @click="handleDelivery" v-if="state.jokeStatus == 'setup'">
+      Tell Me!
+    </button>
     <button class="rounded-lg shadow w-24 h-12 bg-gray-200" v-if="state.jokeStatus == 'delivered'" @click="handleSetup">
-      Another
+      Another!
     </button>
   </div>
   <div class="w-full h-full flex justify-center items-center flex-col" v-else>Loading...</div>
